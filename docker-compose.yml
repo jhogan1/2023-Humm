@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  python:
+    build:
+      context: ./python
+    container_name: python
+    volumes:
+      - .:/usr/src/app
+
+  db:
+    build:
+      context: ./db
+    container_name: db
+    command: mysqld --sql_mode=""
+    ports:
+      - "3308:3306"
+    env_file:
+      - ./db/db.env
+    volumes:
+      - type: volume
+        source: db
+        target: /var/lib/mysql
+
+volumes:
+  db:
