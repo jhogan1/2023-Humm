@@ -7,7 +7,18 @@ services:
       context: ./python
     container_name: python
     volumes:
-      - .:/usr/src/app
+      - type: volume
+        source: python
+        target: /usr/src/app
+
+  flask:
+    build:
+      context: ./flask
+    container_name: flask
+    volumes:
+      - type: volume
+        source: flask
+        target: /usr/src/app
 
   db:
     build:
@@ -25,3 +36,4 @@ services:
 
 volumes:
   db:
+  python:

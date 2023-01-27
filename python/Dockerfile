@@ -1,3 +1,4 @@
 FROM python
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+RUN pip install --upgrade pip
+run useradd -m pydevuser \
+USER pydevuser
